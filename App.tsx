@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, Suspense } from 'react';
 import './style.css';
 
 const ChildEmelent = ({ lanzaalert }) => {
@@ -21,7 +21,7 @@ const ChildEmelent = ({ lanzaalert }) => {
           lanzaalert(nombre);
         }}
       >
-        ALERTA MENSAJE
+        BUSCAR
       </button>
     </div>
   );
@@ -44,9 +44,7 @@ export default function App() {
     ).json();
 
     const { original } = response.data[0].images;
-    console.log(original.url);
     setSearch(original.url);
-    console.log('search', search);
   };
 
   const handleClickalertBoton = (dato) => {
@@ -63,7 +61,9 @@ export default function App() {
       <h1 ref={h1Tag}>{inputdata}</h1>
       <ChildEmelent lanzaalert={handleClickalertBoton} />
       <p>Start editing to see some magic happen :)</p>
-      <img src={search} />
+      <Suspense fallback={<p>Cargando</p>}>
+        <img src={search} />
+      </Suspense>
       {/* {search.map((search) => {
         return <pre key={search}>{search}</pre>;
       })} */}
