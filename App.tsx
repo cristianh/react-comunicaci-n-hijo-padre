@@ -6,7 +6,6 @@ const ChildEmelent = ({ lanzaalert }) => {
 
   return (
     <div>
-      <p>hola</p>
       <input
         type="text"
         value={nombre}
@@ -15,7 +14,7 @@ const ChildEmelent = ({ lanzaalert }) => {
         }}
       />
       <br />
-      {nombre}
+
       <button
         onClick={() => {
           lanzaalert(nombre);
@@ -60,7 +59,7 @@ export default function App() {
     <div>
       <h1 ref={h1Tag}>{inputdata}</h1>
       <ChildEmelent lanzaalert={handleClickalertBoton} />
-      <p>Start editing to see some magic happen :)</p>
+      <hr />
       <Suspense fallback={<p>Cargando</p>}>
         <img src={search} />
       </Suspense>
